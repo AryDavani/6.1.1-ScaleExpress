@@ -8,5 +8,9 @@ module.exports = {
   },
   contact: (req, res) => {
     res.send("Don't contact me");
+  },
+  taylor: (req, res) => {
+    console.log(req.awesomeDude);
+    res.send("Trouble trouble trouble");
   }
 };

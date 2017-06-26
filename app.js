@@ -1,18 +1,16 @@
 const express = require("express");
 const mustacheExpress = require('mustache-express');
-const homeController = require("./controllers/home-controller");
-const dogController = require("./controllers/dog-controller");
+const routes = require("./router");
+const morgan = require("morgan");
+
 const app = express();
 
 app.engine("mustache", mustacheExpress());
 app.set("view engine", "mustache");
 app.set("views", "./views");
 
-app.get("/", homeController.index);
-app.get("/about", homeController.about);
-app.get("/contact", homeController.contact);
+app.use(morgan("combined"));
 
-app.get("/dog/", dogController.list);
-app.get("/dog/:id", dogController.detail);
+routes(app);
 
 app.listen(3000);
